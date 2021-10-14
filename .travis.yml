@@ -1,0 +1,11 @@
+language: generic
+
+sudo: required
+serrvices:
+  - docker
+
+before_install:
+  - docker build -t jmkezman/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true jmkezman/docker-react npm tun test
